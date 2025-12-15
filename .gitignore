@@ -8,6 +8,8 @@ package-lock.json
 
 # Loại trừ phần phát triển
 !plugins/
+!plugins/extend-site
+!plugins/extend-site/**
 
 !themes/
 !themes/residence/
