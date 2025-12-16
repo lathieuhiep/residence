@@ -54,7 +54,8 @@ function residence_add_theme_support(): void
 function residence_register_nav_menus(): void
 {
     register_nav_menus([
-        'main_menu' => esc_html__('Menu chính', 'residence'),
+        'main_menu_left' => esc_html__('Menu chính bên trái', 'residence'),
+        'main_menu_right' => esc_html__('Menu chính bên phải', 'residence'),
     ]);
 }
 

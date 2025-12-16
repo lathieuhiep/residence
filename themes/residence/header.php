@@ -14,7 +14,14 @@
 <div class="page-wrapper"><!-- open div.page-wrapper -->
     <?php
     if ( !is_404() ) :
-        get_template_part('components/header/header-main', 'layout');
+        // Loading Screen
+        get_template_part('template-parts/loading/loader');
+
+        // Primary Navigation
+        get_template_part('template-parts/navigation/menu', 'primary');
+
+        // Mobile Navigation
+        get_template_part('template-parts/navigation/menu', 'mobile');
     endif;
     ?>
 

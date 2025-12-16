@@ -64,6 +64,9 @@ function residence_enqueue_theme_assets(): void
         wp_enqueue_style('residence-page-404', get_theme_file_uri('/assets/css/page-templates/page-404.min.css'), [], wp_get_theme()->get('Version'));
     }
 
+    // current-device library
+    wp_enqueue_script('current-device', get_theme_file_uri('/assets/vendors/device-js/current-device.min.js'), ['jquery'], '0.10.1', true);
+
     // lenis library
     wp_enqueue_script('lenis', get_theme_file_uri('/assets/vendors/lenis/lenis.min.js'), ['jquery'], wp_get_theme()->get('Version'), true);
 

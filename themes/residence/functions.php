@@ -4,9 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Required: Core classes
+require get_parent_theme_file_path( '/core/helpers.php' );
+require get_parent_theme_file_path( '/core/hook-filter.php' );
 require get_parent_theme_file_path( '/core/theme-setup.php' );
 require get_parent_theme_file_path( '/core/theme-sidebar.php' );
-require get_parent_theme_file_path( '/core/helpers.php' );
 require get_parent_theme_file_path( '/core/assets.php' );
 require get_parent_theme_file_path( '/core/custom-comments.php' );
 
