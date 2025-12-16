@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'TH-icon';
+  src:
+    url('fonts/TH-icon.ttf?2gzeks') format('truetype'),
+    url('fonts/TH-icon.woff?2gzeks') format('woff'),
+    url('fonts/TH-icon.svg?2gzeks#TH-icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="se-"], [class*=" se-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'TH-icon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.se-arrow-down:before {
+  content: "\e900";
+}
+.se-arrow-left:before {
+  content: "\e901";
+}
+.se-arrow-right:before {
+  content: "\e902";
+}
+.se-arrow-up:before {
+  content: "\e903";
+}
