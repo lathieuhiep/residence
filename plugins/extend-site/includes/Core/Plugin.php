@@ -4,6 +4,7 @@ namespace ExtendSite\Core;
 
 use Carbon_Fields\Carbon_Fields;
 use ExtendSite\Fields\FieldsManager;
+use ExtendSite\MetaBox\BranchMetaBox;
 use ExtendSite\Options\ThemeOptions;
 use ExtendSite\PostType\BranchPostType;
 use ExtendSite\ElementorAddon\ElementorAddon;
@@ -31,6 +32,9 @@ class Plugin
 
         // Load Carbon Fields theme options
         ThemeOptions::boot();
+
+        // Load MetaBoxes
+        self::load_meta_box();
     }
 
     /**
@@ -80,5 +84,13 @@ class Plugin
             flush_rewrite_rules(false); // false = không ghi lại htaccess
             delete_option('extend_site_flush_rewrite');
         }
+    }
+
+    /**
+     * Load Meta Boxes.
+     */
+    private static function load_meta_box(): void
+    {
+        BranchMetaBox::boot();
     }
 }

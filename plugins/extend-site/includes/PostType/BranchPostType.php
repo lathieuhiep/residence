@@ -14,14 +14,13 @@ class BranchPostType extends BasePostType
     // create constructor
     public function __construct(array $args = [])
     {
-        $args = array_replace_recursive([
+        $args = [
             'rewrite' => [
                 'slug' => 'chi-nhanh',
                 'with_front' => false
             ],
-            'supports' => ['title', 'editor', 'author'],
             'menu_icon' => 'dashicons-location',
-        ], $args);
+        ];
 
         parent::__construct($args);
     }

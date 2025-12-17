@@ -108,7 +108,7 @@ abstract class BasePostType
             'has_archive' => true,
             'show_in_rest' => false,           // Off Gutenberg + REST
             'hierarchical' => false,
-            'supports' => ['title','editor','thumbnail','excerpt','author','comments','revisions'],
+            'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'author'],
             'menu_position' => 5,
             'menu_icon' => 'dashicons-portfolio',
             'rewrite' => ['slug' => static::SLUG, 'with_front' => false],
