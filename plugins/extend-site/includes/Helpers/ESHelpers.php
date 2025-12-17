@@ -89,4 +89,35 @@ class ESHelpers
             'screen_reader_text' => '&nbsp;',
         ));
     }
+
+    /**
+     * Tải một template part từ theme hoặc plugin.
+     *
+     * @param string $slug Đường dẫn slug của template (không bao gồm phần mở rộng .php).
+     * @param array $args Mảng các biến để truyền vào template.
+     * @return void
+     */
+    public static function get_template_part(string $slug, array $args = []): void
+    {
+        $slug = ltrim($slug, '/');
+        $file = $slug . '.php';
+
+        // Theme override
+        $template = locate_template([
+            'extend-site/' . $file,
+            $file,
+        ]);
+
+        if ($template) {
+            load_template($template, false, $args);
+            return;
+        }
+
+        // Plugin fallback
+        $plugin_template = EXTEND_SITE_PATH . 'templates/' . $file;
+
+        if (file_exists($plugin_template)) {
+            load_template($plugin_template, false, $args);
+        }
+    }
 }

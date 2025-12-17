@@ -25,4 +25,4 @@
     endif;
     ?>
 
-    <main class="main-content"><!-- open main.main-content -->
+    <main class="page-content"><!-- open main.page-content -->
