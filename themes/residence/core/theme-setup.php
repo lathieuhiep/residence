@@ -56,6 +56,7 @@ function residence_register_nav_menus(): void
     register_nav_menus([
         'main_menu_left' => esc_html__('Menu chính bên trái', 'residence'),
         'main_menu_right' => esc_html__('Menu chính bên phải', 'residence'),
+        'main_menu_device' => esc_html__('Menu chính hiển thị cho thiết bị (mobile, tablet)', 'residence'),
     ]);
 }
 

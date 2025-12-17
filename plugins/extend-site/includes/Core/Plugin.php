@@ -4,9 +4,8 @@ namespace ExtendSite\Core;
 
 use Carbon_Fields\Carbon_Fields;
 use ExtendSite\Fields\FieldsManager;
-use ExtendSite\Options\GeneralOptions;
 use ExtendSite\Options\ThemeOptions;
-use ExtendSite\PostType\PortfolioPostType;
+use ExtendSite\PostType\BranchPostType;
 use ExtendSite\ElementorAddon\ElementorAddon;
 use ExtendSite\PostType\TemplateLoader;
 
@@ -19,10 +18,10 @@ class Plugin
         self::load_text_domain();
         self::load_enqueue();
         self::load_elementor_addon();
-//        self::load_custom_post_types();
+        self::load_custom_post_types();
 
         // Flush rewrite
-//        self::maybe_flush_rewrite();
+        self::maybe_flush_rewrite();
 
         // Load Carbon Fields
         CarbonLoader::boot();
@@ -67,7 +66,7 @@ class Plugin
      */
     private static function load_custom_post_types(): void
     {
-        new PortfolioPostType();
+        new BranchPostType();
 
         TemplateLoader::boot();
     }
@@ -81,14 +80,5 @@ class Plugin
             flush_rewrite_rules(false); // false = không ghi lại htaccess
             delete_option('extend_site_flush_rewrite');
         }
-    }
-
-    /**
-     * Load Carbon Fields library.
-     */
-    private static function load_carbon_fields(): void {
-        require_once EXTEND_SITE_PATH . 'vendor/carbon-fields/core/Carbon_Fields.php';
-
-        Carbon_Fields::boot();
     }
 }

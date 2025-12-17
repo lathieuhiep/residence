@@ -2,6 +2,20 @@
 defined('ABSPATH') || exit;
 
 /**
+ * @template T of object
+ * @param class-string<T> $class
+ * @return T|null
+ */
+function residence_get_opt(string $class)
+{
+    if (!class_exists($class)) {
+        return null;
+    }
+
+    return new $class();
+}
+
+/**
  * Custom pagination for theme
  */
 function residence_pagination_custom( $args = array() ): void
