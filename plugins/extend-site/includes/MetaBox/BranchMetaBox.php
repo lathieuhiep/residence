@@ -4,6 +4,7 @@ namespace ExtendSite\MetaBox;
 
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
+use ExtendSite\Helpers\ESHelpers;
 use ExtendSite\PostType\BranchPostType;
 
 defined('ABSPATH') || exit;
@@ -22,8 +23,8 @@ class BranchMetaBox extends OptionPostMetaBase
     private const TAB_ABOUT_DESC = self::TAB_ABOUT . 'desc';
     private const TAB_ABOUT_IMAGE = self::TAB_ABOUT . 'image';
 
-    // Tab notification constants
-    private const TAB_NOTIFICATION = self::PREFIX_MB . 'tab_notification';
+    // Tab room constants
+    private const TAB_ROOMS = self::PREFIX_MB . 'tab_rooms';
 
     // Boot method
     public static function boot(): void
@@ -56,10 +57,81 @@ class BranchMetaBox extends OptionPostMetaBase
                 Field::make('textarea', self::TAB_ABOUT_DESC, esc_html__('Mô tả', 'extend-site')),
                 Field::make('image', self::TAB_ABOUT_IMAGE, esc_html__('Ảnh', 'extend-site')),
             ))
-            ->add_tab(esc_html__('Notification'), array(
-                Field::make('text', 'crb_email', esc_html__('Notification Email')),
-                Field::make('text', 'crb_phone', esc_html__('Phone Number')),
-            ));
+            ->add_tab(esc_html__('Loại phòng', 'extend-site'), [
+                Field::make(
+                    'complex',
+                    self::TAB_ROOMS,
+                    esc_html__('Danh sách loại phòng', 'extend-site')
+                )
+                    ->set_layout('tabbed-horizontal')
+                    ->set_collapsed(true)
+                    ->add_fields([
+
+                        /* =====================
+                         * BASIC
+                         * ===================== */
+                        Field::make('text', 'title', esc_html__('Tên loại phòng', 'extend-site'))
+                            ->set_required(true)
+                            ->set_help_text(
+                                esc_html__('VD: Căn hộ studio, Căn hộ 2 phòng ngủ', 'extend-site')
+                            ),
+
+                        /* =====================
+                         * ROOM INFO
+                         * ===================== */
+                        Field::make('separator', 'sep_info', esc_html__('Thông tin phòng', 'extend-site')),
+
+                        Field::make('text', 'capacity', esc_html__('Capacity', 'extend-site'))
+                            ->set_help_text('VD: 1 - 3 person'),
+
+                        Field::make('text', 'area', esc_html__('Area', 'extend-site'))
+                            ->set_help_text('VD: 138m²'),
+
+                        Field::make('complex', 'location', esc_html__('Location', 'extend-site'))
+                            ->set_layout('tabbed-vertical')
+                            ->set_collapsed(true)
+                            ->add_fields([
+                                Field::make('text', 'text', esc_html__('Nội dung', 'extend-site')),
+                            ]),
+
+                        Field::make('complex', 'detail', esc_html__('Detail', 'extend-site'))
+                            ->set_layout('tabbed-vertical')
+                            ->set_collapsed(true)
+                            ->add_fields([
+                                Field::make('text', 'text', esc_html__('Nội dung', 'extend-site')),
+                            ]),
+
+                        /* =====================
+                         * GALLERY DESKTOP
+                         * ===================== */
+                        Field::make(
+                            'separator',
+                            'sep_gallery_desktop',
+                            esc_html__('Gallery Desktop', 'extend-site')
+                        ),
+
+                        Field::make(
+                            'media_gallery',
+                            'gallery_desktop',
+                            esc_html__('Ảnh desktop', 'extend-site')
+                        ),
+
+                        /* =====================
+                         * GALLERY MOBILE
+                         * ===================== */
+                        Field::make(
+                            'separator',
+                            'sep_gallery_mobile',
+                            esc_html__('Gallery Mobile', 'extend-site')
+                        ),
+
+                        Field::make(
+                            'media_gallery',
+                            'gallery_mobile',
+                            esc_html__('Ảnh mobile', 'extend-site')
+                        ),
+                    ]),
+            ]);
     }
 
     /* =======================
@@ -69,9 +141,9 @@ class BranchMetaBox extends OptionPostMetaBase
     /*
     * Get Mobile Image
      * */
-    public function get_post_meta_mobile_image(int $post_id): string
+    public function get_post_meta_mobile_image(int $post_id): int
     {
-        return self::get_option_post_meta($post_id, self::PREFIX_MB . 'mobile_image');
+        return (int) self::get_option_post_meta($post_id, self::MOBILE_IMAGE);
     }
 
     /*
@@ -84,5 +156,34 @@ class BranchMetaBox extends OptionPostMetaBase
             'desc' => self::get_option_post_meta($post_id, self::TAB_ABOUT_DESC),
             'image' => self::get_option_post_meta($post_id, self::TAB_ABOUT_IMAGE),
         ];
+    }
+
+    /**
+     * Get rooms data
+     */
+    public function get_post_meta_rooms(int $post_id): array
+    {
+        $rooms = (array) self::get_option_post_meta($post_id, self::TAB_ROOMS);
+
+        if (empty($rooms)) {
+            return [];
+        }
+
+        $data = [];
+
+        foreach ($rooms as $room) {
+            $data[] = [
+                'title' => $room['title'] ?? '',
+                'capacity' => $room['capacity'] ?? '',
+                'area' => $room['area'] ?? '',
+                'location' => ESHelpers::normalize_text_list($room['location'] ?? []),
+                'detail' => ESHelpers::normalize_text_list($room['detail'] ?? []),
+                'gallery_desktop' => array_map('intval', $room['gallery_desktop'] ?? []),
+                'gallery_mobile'  => array_map('intval', $room['gallery_mobile'] ?? []),
+                'has_gallery' => ! empty($room['gallery_desktop']) || ! empty($room['gallery_mobile']),
+            ];
+        }
+
+        return $data;
     }
 }
