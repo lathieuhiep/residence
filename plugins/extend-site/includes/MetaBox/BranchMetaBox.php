@@ -26,6 +26,9 @@ class BranchMetaBox extends OptionPostMetaBase
     // Tab room constants
     private const TAB_ROOMS = self::PREFIX_MB . 'tab_rooms';
 
+    //
+    private const TAB_LOCATION = self::PREFIX_MB . 'tab_location';
+
     // Boot method
     public static function boot(): void
     {
@@ -52,11 +55,11 @@ class BranchMetaBox extends OptionPostMetaBase
         /** Main metabox */
         Container::make('post_meta', esc_html__('Thông tin chi nhánh', 'extend-site'))
             ->where('post_type', '=', BranchPostType::SLUG)
-            ->add_tab(esc_html__('Giới thiệu', 'extend-site'), array(
+            ->add_tab(esc_html__('Giới thiệu', 'extend-site'), [
                 Field::make('text', self::TAB_ABOUT_HEADING, esc_html__('Tiêu đề', 'extend-site')),
                 Field::make('textarea', self::TAB_ABOUT_DESC, esc_html__('Mô tả', 'extend-site')),
                 Field::make('image', self::TAB_ABOUT_IMAGE, esc_html__('Ảnh', 'extend-site')),
-            ))
+            ])
             ->add_tab(esc_html__('Loại phòng', 'extend-site'), [
                 Field::make(
                     'complex',
@@ -87,19 +90,12 @@ class BranchMetaBox extends OptionPostMetaBase
                         Field::make('text', 'area', esc_html__('Area', 'extend-site'))
                             ->set_help_text('VD: 138m²'),
 
-                        Field::make('complex', 'location', esc_html__('Location', 'extend-site'))
-                            ->set_layout('tabbed-vertical')
-                            ->set_collapsed(true)
-                            ->add_fields([
-                                Field::make('text', 'text', esc_html__('Nội dung', 'extend-site')),
-                            ]),
-
                         Field::make('complex', 'detail', esc_html__('Detail', 'extend-site'))
                             ->set_layout('tabbed-vertical')
                             ->set_collapsed(true)
                             ->add_fields([
                                 Field::make('text', 'text', esc_html__('Nội dung', 'extend-site')),
-                            ]),
+                            ])->set_header_template(esc_html__('Mô tả', 'extend-site') . ' <%- $_index + 1 %>'),
 
                         /* =====================
                          * GALLERY DESKTOP
@@ -114,7 +110,7 @@ class BranchMetaBox extends OptionPostMetaBase
                             'media_gallery',
                             'gallery_desktop',
                             esc_html__('Ảnh desktop', 'extend-site')
-                        ),
+                        )->set_type( 'image' ),
 
                         /* =====================
                          * GALLERY MOBILE
@@ -130,7 +126,20 @@ class BranchMetaBox extends OptionPostMetaBase
                             'gallery_mobile',
                             esc_html__('Ảnh mobile', 'extend-site')
                         ),
-                    ]),
+                    ])
+                    ->set_header_template( '
+                        <% if (title) { %>
+                            <%- title %>
+                        <% } %>
+                    ' ),
+            ])
+            ->add_tab(esc_html__('Vị trí', 'extend-site'), [
+                Field::make( 'complex', self::TAB_LOCATION, esc_html__('Danh sách vị trí (dùng chung cho loại phòng)', 'extend-site') )
+                    ->set_layout('tabbed-vertical')
+                    ->set_collapsed(true)
+                    ->add_fields( array(
+                        Field::make('text', 'text', esc_html__('Nội dung', 'extend-site')),
+                    ) )->set_header_template(esc_html__('Mô tả', 'extend-site') . ' <%- $_index + 1 %>'),
             ]);
     }
 
@@ -176,7 +185,6 @@ class BranchMetaBox extends OptionPostMetaBase
                 'title' => $room['title'] ?? '',
                 'capacity' => $room['capacity'] ?? '',
                 'area' => $room['area'] ?? '',
-                'location' => ESHelpers::normalize_text_list($room['location'] ?? []),
                 'detail' => ESHelpers::normalize_text_list($room['detail'] ?? []),
                 'gallery_desktop' => array_map('intval', $room['gallery_desktop'] ?? []),
                 'gallery_mobile'  => array_map('intval', $room['gallery_mobile'] ?? []),
@@ -185,5 +193,19 @@ class BranchMetaBox extends OptionPostMetaBase
         }
 
         return $data;
+    }
+
+    /**
+     * Get location data
+     */
+    public function get_post_meta_location(int $post_id): array
+    {
+        $locations = (array) self::get_option_post_meta($post_id, self::TAB_LOCATION);
+
+        if (empty($locations)) {
+            return [];
+        }
+
+        return ESHelpers::normalize_text_list($locations);
     }
 }
