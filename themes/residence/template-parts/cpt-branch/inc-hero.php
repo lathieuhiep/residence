@@ -7,11 +7,15 @@
 
 use ExtendSite\MetaBox\BranchMetaBox;
 
-$image_url_pc = get_the_post_thumbnail_url(get_the_ID(), 'full');
-$image_mb_id = residence_get_opt(BranchMetaBox::class)?->get_post_meta_mobile_image(get_the_ID());
+$banner = residence_get_opt(BranchMetaBox::class)?->get_post_meta_banner_images(get_the_ID());
+$image_url_pc = $image_url_mb = '';
 
-if ( $image_mb_id ) {
-    $image_url_mb = wp_get_attachment_image_url($image_mb_id, 'full');
+if ( $banner && ! empty( $banner['desktop'] ) ) {
+    $image_url_pc = wp_get_attachment_image_url($banner['desktop'], 'full');
+}
+
+if ( $banner && ! empty( $banner['mobile'] ) ) {
+    $image_url_mb = wp_get_attachment_image_url($banner['mobile'], 'full');
 } else {
     $image_url_mb = $image_url_pc;
 }

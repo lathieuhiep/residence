@@ -14,8 +14,10 @@ class BranchMetaBox extends OptionPostMetaBase
     // Key prefix
     private const PREFIX_MB = 'es_mb_branch_';
 
-    // Mobile image (sidebar)
-    private const MOBILE_IMAGE = self::PREFIX_MB . 'mobile_image';
+    // Tab banner constants
+    private const TAB_BANNER = self::PREFIX_MB . 'tab_banner_';
+    private const TAB_BANNER_IMAGE_DESKTOP = self::TAB_BANNER . 'image_desktop';
+    private const TAB_BANNER_IMAGE_MOBILE = self::TAB_BANNER . 'image_mobile';
 
     // Tab about constants
     private const TAB_ABOUT = self::PREFIX_MB . 'tab_about_';
@@ -34,6 +36,10 @@ class BranchMetaBox extends OptionPostMetaBase
     private const TAB_MAP_LNG = self::TAB_MAP . 'lng';
     private const TAB_MAP_ZOOM = self::TAB_MAP . 'zoom';
 
+    // Tab more info constants
+    private const TAB_MORE_INFO = self::PREFIX_MB . 'tab_more_info_';
+    private const TAB_MORE_INFO_NUMBER_OF_APARTMENTS = self::TAB_MORE_INFO . 'number_of_apartments';
+
     // Boot method
     public static function boot(): void
     {
@@ -43,23 +49,19 @@ class BranchMetaBox extends OptionPostMetaBase
     // Register meta boxes
     public static function register(): void
     {
-        /**
-         * Sidebar metabox
-         */
-        Container::make('post_meta', esc_html__('Ảnh Mobile', 'extend-site'))
-            ->where('post_type', '=', BranchPostType::SLUG)
-            ->set_context('side')
-            ->set_priority('low')
-            ->add_fields([
-                Field::make('image', self::MOBILE_IMAGE, esc_html__('Ảnh hiển thị Mobile', 'extend-site'))
-                    ->set_help_text(
-                        esc_html__('Dùng cho màn hình mobile. Nếu không chọn sẽ fallback ảnh đại diện.', 'extend-site')
-                    ),
-            ]);
-
         /** Main metabox */
         Container::make('post_meta', esc_html__('Thông tin chi nhánh', 'extend-site'))
             ->where('post_type', '=', BranchPostType::SLUG)
+            ->add_tab(esc_html__('Banner', 'extend-site'), [
+                Field::make('image', self::TAB_BANNER_IMAGE_DESKTOP, esc_html__('Ảnh Desktop', 'extend-site'))
+                    ->set_help_text(
+                        esc_html__('Kích thước đề xuất: 1920x600px', 'extend-site')
+                    ),
+                Field::make('image', self::TAB_BANNER_IMAGE_MOBILE, esc_html__('Ảnh Mobile', 'extend-site'))
+                    ->set_help_text(
+                        esc_html__('Kích thước đề xuất: 768x600px', 'extend-site')
+                    ),
+            ])
             ->add_tab(esc_html__('Giới thiệu', 'extend-site'), [
                 Field::make('text', self::TAB_ABOUT_HEADING, esc_html__('Tiêu đề', 'extend-site')),
                 Field::make('textarea', self::TAB_ABOUT_DESC, esc_html__('Mô tả', 'extend-site')),
@@ -167,6 +169,19 @@ class BranchMetaBox extends OptionPostMetaBase
                     ->set_default_value(10)
                     ->set_help_text(esc_html__('Mức zoom bản đồ (1–19). Thường dùng: 15–17.', 'extend-site'))
                     ->set_width(33),
+            ])
+            ->add_tab(esc_html__('Thông tin thêm', 'extend-site'), [
+                Field::make(
+                    'text',
+                    self::TAB_MORE_INFO_NUMBER_OF_APARTMENTS,
+                    esc_html__('Số lượng căn hộ', 'extend-site')
+                )
+                    ->set_attribute('placeholder', '10')
+                    ->set_default_value(1)
+                    ->set_attribute('type', 'number')
+                    ->set_attribute('min', 1)
+                    ->set_attribute('step', 1)
+                    ->set_width(50),
             ]);
     }
 
@@ -175,11 +190,14 @@ class BranchMetaBox extends OptionPostMetaBase
      * ======================= */
 
     /*
-    * Get Mobile Image
+     * Get Banner Images
      * */
-    public function get_post_meta_mobile_image(int $post_id): int
+    public function get_post_meta_banner_images(int $post_id): array
     {
-        return (int) self::get_option_post_meta($post_id, self::MOBILE_IMAGE);
+        return [
+            'desktop' => (int) self::get_option_post_meta($post_id, self::TAB_BANNER_IMAGE_DESKTOP),
+            'mobile' => (int) self::get_option_post_meta($post_id, self::TAB_BANNER_IMAGE_MOBILE),
+        ];
     }
 
     /*
@@ -244,6 +262,16 @@ class BranchMetaBox extends OptionPostMetaBase
             'lat' => self::get_option_post_meta($post_id, self::TAB_MAP_LAT) ?? '',
             'lng' => self::get_option_post_meta($post_id, self::TAB_MAP_LNG) ?? '',
             'zoom' => self::get_option_post_meta($post_id, self::TAB_MAP_ZOOM) ?? 10,
+        ];
+    }
+
+    /**
+     * Get more info data
+     */
+    public function get_post_meta_more_info(int $post_id): array
+    {
+        return [
+            'number_of_apartments' => (int) self::get_option_post_meta($post_id, self::TAB_MORE_INFO_NUMBER_OF_APARTMENTS) ?? 1,
         ];
     }
 }

@@ -21,10 +21,7 @@ if (empty($meta_rooms)) {
                         $tab_id = 'tab-id-' . ($index + 1);
                         ?>
                         <li>
-                            <a
-                                    href="#<?php echo esc_attr($tab_id); ?>"
-                                    class="<?php echo $index === 0 ? 'current' : ''; ?>"
-                            >
+                            <a href="#<?php echo esc_attr($tab_id); ?>" class="<?php echo $index === 0 ? 'current' : ''; ?>">
                                 <?php echo esc_html($room['title']); ?>
                             </a>
                         </li>
