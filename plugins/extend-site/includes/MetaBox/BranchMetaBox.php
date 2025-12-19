@@ -25,9 +25,14 @@ class BranchMetaBox extends OptionPostMetaBase
 
     // Tab room constants
     private const TAB_ROOMS = self::PREFIX_MB . 'tab_rooms';
-
-    //
     private const TAB_LOCATION = self::PREFIX_MB . 'tab_location';
+
+    // Tab map constants
+    private const TAB_MAP = self::PREFIX_MB . 'tab_map_';
+    private const TAB_MAP_ADDRESS = self::TAB_MAP . 'address';
+    private const TAB_MAP_LAT = self::TAB_MAP . 'lat';
+    private const TAB_MAP_LNG = self::TAB_MAP . 'lng';
+    private const TAB_MAP_ZOOM = self::TAB_MAP . 'zoom';
 
     // Boot method
     public static function boot(): void
@@ -102,30 +107,15 @@ class BranchMetaBox extends OptionPostMetaBase
                          * ===================== */
                         Field::make(
                             'separator',
-                            'sep_gallery_desktop',
-                            esc_html__('Gallery Desktop', 'extend-site')
+                            'sep_gallery',
+                            esc_html__('Gallery', 'extend-site')
                         ),
 
                         Field::make(
                             'media_gallery',
-                            'gallery_desktop',
-                            esc_html__('Ảnh desktop', 'extend-site')
+                            'gallery',
+                            esc_html__('Ảnh', 'extend-site')
                         )->set_type( 'image' ),
-
-                        /* =====================
-                         * GALLERY MOBILE
-                         * ===================== */
-                        Field::make(
-                            'separator',
-                            'sep_gallery_mobile',
-                            esc_html__('Gallery Mobile', 'extend-site')
-                        ),
-
-                        Field::make(
-                            'media_gallery',
-                            'gallery_mobile',
-                            esc_html__('Ảnh mobile', 'extend-site')
-                        ),
                     ])
                     ->set_header_template( '
                         <% if (title) { %>
@@ -140,6 +130,43 @@ class BranchMetaBox extends OptionPostMetaBase
                     ->add_fields( array(
                         Field::make('text', 'text', esc_html__('Nội dung', 'extend-site')),
                     ) )->set_header_template(esc_html__('Mô tả', 'extend-site') . ' <%- $_index + 1 %>'),
+            ])
+            ->add_tab(esc_html__('Vị trí chi nhánh', 'extend-site'), [
+                // Address
+                Field::make('text', self::TAB_MAP_ADDRESS, esc_html__('Địa chỉ chi nhánh', 'extend-site'))
+                    ->set_attribute('placeholder', '25 Phố Huế'),
+
+                // Latitude
+                Field::make('text', self::TAB_MAP_LAT, esc_html__('Latitude (Vĩ độ)', 'extend-site'))
+                    ->set_attribute('placeholder', '21.01781')
+                    ->set_help_text(
+                        esc_html__(
+                            'Cách lấy tọa độ: Mở Google Maps → tìm địa chỉ → chuột phải vào vị trí → sẽ hiện tọa độ" → copy số đứng trước (ví dụ: 21.01781).',
+                            'extend-site'
+                        )
+                    )
+                    ->set_width(33),
+
+                // Longitude
+                Field::make('text', self::TAB_MAP_LNG, __('Longitude (Kinh độ)', 'extend-site'))
+                    ->set_attribute('placeholder', '105.85293')
+                    ->set_help_text(
+                        esc_html__(
+                            'Dán số đứng sau trong tọa độ Google Maps (ví dụ: 105.85293).',
+                            'extend-site'
+                        )
+                    )
+                    ->set_width(33),
+
+                // Zoom
+                Field::make('text', self::TAB_MAP_ZOOM, esc_html__('Zoom', 'extend-site'))
+                    ->set_attribute('type', 'number')
+                    ->set_attribute('min', 1)
+                    ->set_attribute('max', 19)
+                    ->set_attribute('step', 1)
+                    ->set_default_value(10)
+                    ->set_help_text(esc_html__('Mức zoom bản đồ (1–19). Thường dùng: 15–17.', 'extend-site'))
+                    ->set_width(33),
             ]);
     }
 
@@ -186,9 +213,7 @@ class BranchMetaBox extends OptionPostMetaBase
                 'capacity' => $room['capacity'] ?? '',
                 'area' => $room['area'] ?? '',
                 'detail' => ESHelpers::normalize_text_list($room['detail'] ?? []),
-                'gallery_desktop' => array_map('intval', $room['gallery_desktop'] ?? []),
-                'gallery_mobile'  => array_map('intval', $room['gallery_mobile'] ?? []),
-                'has_gallery' => ! empty($room['gallery_desktop']) || ! empty($room['gallery_mobile']),
+                'gallery' => array_map('intval', $room['gallery'] ?? []),
             ];
         }
 
@@ -207,5 +232,18 @@ class BranchMetaBox extends OptionPostMetaBase
         }
 
         return ESHelpers::normalize_text_list($locations);
+    }
+
+    /**
+     * Get map data
+     */
+    public function get_post_meta_map(int $post_id): array
+    {
+        return [
+            'address' => self::get_option_post_meta($post_id, self::TAB_MAP_ADDRESS) ?? '',
+            'lat' => self::get_option_post_meta($post_id, self::TAB_MAP_LAT) ?? '',
+            'lng' => self::get_option_post_meta($post_id, self::TAB_MAP_LNG) ?? '',
+            'zoom' => self::get_option_post_meta($post_id, self::TAB_MAP_ZOOM) ?? 10,
+        ];
     }
 }

@@ -82,7 +82,7 @@ function residence_enqueue_theme_assets(): void
     // headroom library
     wp_enqueue_script('headroom', get_theme_file_uri('/assets/vendors/headroom/headroom.js'), ['jquery'], '0.9.4', true);
 
-    // Enqueue main theme script.
+    // Enqueue main theme script
     wp_enqueue_script('residence-main', get_theme_file_uri('/assets/js/functions.js'), ['jquery'], wp_get_theme()->get('Version'), true);
 }
 
