@@ -2,6 +2,7 @@
 
     <?php
     if ( !is_404() ) :
+        get_template_part('template-parts/components/inc', 'recruitment');
     ?>
         <footer class="footer" id="id-lienhe">
             <div class="container">

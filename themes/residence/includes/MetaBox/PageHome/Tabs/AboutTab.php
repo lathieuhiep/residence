@@ -8,8 +8,8 @@ defined('ABSPATH') || exit;
 
 final class AboutTab
 {
-    public const KEY_TITLE   = 'home_about_title';
-    public const KEY_CONTENT = 'home_about_content';
+    private const KEY_TITLE   = 'home_about_title';
+    private const KEY_CONTENT = 'home_about_content';
 
     /**
      * Fields definition

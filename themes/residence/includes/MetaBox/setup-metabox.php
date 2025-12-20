@@ -10,6 +10,7 @@ add_action('after_setup_theme', function () {
         return;
     }
 
-    // Home Page metabox
+    // include meta box files
     require_once get_theme_file_path('includes/MetaBox/PageHome/PageHomeMeta.php');
+    require_once get_theme_file_path('includes/MetaBox/PageAbout/PageAboutMeta.php');
 });
