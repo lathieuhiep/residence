@@ -23,7 +23,6 @@ class GeneralOptions extends OptionBase
     // option fields
     public static function fields(): array
     {
-
         return [
             // Logo & Branding
             Field::make('image', self::LOGO, esc_html__('Logo', 'extend-site'))

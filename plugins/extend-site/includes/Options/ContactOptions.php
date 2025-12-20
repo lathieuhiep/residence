@@ -11,7 +11,7 @@ class ContactOptions extends OptionBase
     private const PREFIX = 'es_opt_contact_';
     private const HOTLINE = self::PREFIX . 'hotline';
     private const EMAIL = self::PREFIX . 'email';
-    private const ADDRESS = self::PREFIX . 'address';
+    private const SOCIAL_LINKS = self::PREFIX . 'social_links';
 
     // option fields
     public static function fields(): array
@@ -19,7 +19,35 @@ class ContactOptions extends OptionBase
         return [
             Field::make('text', self::HOTLINE, esc_html__('Hotline', 'extend-site')),
             Field::make('text', self::EMAIL, esc_html__('Email', 'extend-site')),
-            Field::make('textarea', self::ADDRESS, esc_html__('Address', 'extend-site')),
+
+            // social links
+            Field::make(
+                'complex',
+                self::SOCIAL_LINKS,
+                esc_html__( 'Mạng xã hội', 'extend-site' )
+            )
+                ->set_layout( 'tabbed-horizontal' )
+                ->set_collapsed( true )
+                ->add_fields( [
+                    Field::make(
+                        'text',
+                        'label',
+                        esc_html__( 'Tên mạng xã hội', 'extend-site' )
+                    )->set_help_text( esc_html__( 'Ví dụ: FACEBOOK, INSTAGRAM', 'extend-site' ) ),
+
+                    Field::make(
+                        'text',
+                        'url',
+                        esc_html__( 'Link', 'extend-site' )
+                    )
+                        ->set_attribute( 'type', 'url' )
+                        ->set_help_text( esc_html__( 'https://...', 'extend-site' ) ),
+                ] )
+                ->set_header_template( '
+                    <% if (label) { %>
+                        <%- label %>
+                    <% } %>
+                ' ),
         ];
     }
 
@@ -35,9 +63,22 @@ class ContactOptions extends OptionBase
         return self::get(self::EMAIL);
     }
 
-    // get contact address
-    public function get_opt_contact_address(): ?string
+    // get social links
+    public function get_opt_contact_social_links( array $default = [] ): array
     {
-        return self::get(self::ADDRESS);
+        $items = self::get( self::SOCIAL_LINKS );
+
+        if ( empty( $items ) || ! is_array( $items ) ) {
+            return $default;
+        }
+
+        return array_values(
+            array_filter(
+                $items,
+                fn ( $item ) =>
+                    ! empty( $item['label'] ) &&
+                    ! empty( $item['url'] )
+            )
+        );
     }
 }

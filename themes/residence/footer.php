@@ -2,7 +2,18 @@
 
     <?php
     if ( !is_404() ) :
-        get_template_part('components/footer/footer-main', 'layout');
+    ?>
+        <footer class="footer" id="id-lienhe">
+            <div class="container">
+                <div class="item-inner">
+                    <?php
+                    get_template_part('template-parts/footer/inc', 'logo-brand');
+                    get_template_part('template-parts/footer/inc', 'info-brand');
+                    ?>
+                </div>
+            </div>
+        </footer>
+    <?php
      endif;
      ?>
 </div> <!-- close div.page-wrapper -->

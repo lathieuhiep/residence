@@ -58,6 +58,9 @@ class ThemeOptions
 
         // Footer tab and other tabs
         $container->add_tab(
+            esc_html__('Recruitment', 'extend-site'),
+            RecruitmentOptions::fields()
+        )->add_tab(
             esc_html__('Footer', 'extend-site'),
             FooterOptions::fields()
         )->add_tab(

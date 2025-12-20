@@ -12,173 +12,100 @@ class FooterOptions extends OptionBase
 
     // Key prefix
     private const PREFIX = 'es_opt_footer_';
-    private const SIDEBAR_COLUMNS = self::PREFIX . 'columns';
-    private const BREAKPOINT_HEADING = self::PREFIX . 'breakpoint_heading_sidebar_';
-    private const COLUMNS_PREFIX = self::PREFIX . 'sidebar_column_';
+    private const LOGO = self::PREFIX . 'logo';
+    private const BRAND_GALLERY = self::PREFIX . 'brand_gallery';
+    private const ADDRESS_COLUMNS = self::PREFIX . 'address_columns';
 
-    // fields
+        // fields
     public static function fields(): array
     {
-        $fields = [];
+        return [
+            // Logo & Branding
+            Field::make('image', self::LOGO, esc_html__('Logo', 'extend-site'))
+                ->set_value_type('id'),
 
-        // sidebar columns count
-        $fields[] = Field::make('select', self::SIDEBAR_COLUMNS, esc_html__('Sidebar Columns Count', 'extend-site'))
-            ->set_options([
-                '0' => esc_html__('Hide all sidebars', 'extend-site'),
-                '1' => 1,
-                '2' => 2,
-                '3' => 3,
-                '4' => 4,
-            ])->set_default_value('4');
+            // brand media gallery
+            Field::make( 'media_gallery', self::BRAND_GALLERY, esc_html__( 'Brand gallery', 'extend-site' ) ),
 
-        // breakpoint heading for sidebar 1
-        $fields[] = Field::make('html', self::BREAKPOINT_HEADING . '1')
-            ->set_html('<h4>' . esc_html__('Sidebar Column 1 Settings', 'extend-site') . '</h4>')
-            ->set_conditional_logic([
-                [
-                    'field' => self::SIDEBAR_COLUMNS,
-                    'value' => ['1', '2', '3', '4'],
-                    'compare' => 'IN',
-                ]
-            ]);
-
-        foreach (Breakpoints::map() as $key => $minWidth) {
-            $fields[] = Field::make(
-                'text',
-                self::COLUMNS_PREFIX . '1_' . $key,
-                esc_html__(strtoupper($key) . ': ≥' . $minWidth . 'px', 'extend-site')
+            // Footer address columns
+            Field::make(
+                'complex',
+                self::ADDRESS_COLUMNS,
+                esc_html__( 'Danh sách địa chỉ (Footer)', 'extend-site' )
             )
-                ->set_attribute('type', 'number')
-                ->set_attribute('min', 1)
-                ->set_attribute('max', 12)
-                ->set_attribute('step', 1)
-                ->set_default_value(Breakpoints::default_sidebar_col($key))
-                ->set_width(25)
-                ->set_conditional_logic([
-                    [
-                        'field' => self::SIDEBAR_COLUMNS,
-                        'value' => ['1', '2', '3', '4'],
-                        'compare' => 'IN',
-                    ]
-                ]);
-        }
-
-        // breakpoint heading for sidebar 2
-        $fields[] = Field::make('html', self::BREAKPOINT_HEADING . '2')
-            ->set_html('<h4>' . esc_html__('Sidebar Column 2 Settings', 'extend-site') . '</h4>')
-            ->set_conditional_logic([
-                [
-                    'field' => self::SIDEBAR_COLUMNS,
-                    'value' => ['2', '3', '4'],
-                    'compare' => 'IN',
-                ]
-            ]);
-
-        foreach (Breakpoints::map() as $key => $minWidth) {
-            $fields[] = Field::make(
-                'text',
-                self::COLUMNS_PREFIX . '2_' . $key,
-                esc_html__(strtoupper($key) . ': ≥' . $minWidth . 'px', 'extend-site')
-            )
-                ->set_attribute('type', 'number')
-                ->set_attribute('min', 1)
-                ->set_attribute('max', 12)
-                ->set_attribute('step', 1)
-                ->set_default_value(Breakpoints::default_sidebar_col($key))
-                ->set_width(25)
-                ->set_conditional_logic([
-                    [
-                        'field' => self::SIDEBAR_COLUMNS,
-                        'value' => ['2', '3', '4'],
-                        'compare' => 'IN',
-                    ]
-                ]);
-        }
-
-        // breakpoint heading for sidebar 3
-        $fields[] = Field::make('html', self::BREAKPOINT_HEADING . '3')
-            ->set_html('<h4>' . esc_html__('Sidebar Column 3 Settings', 'extend-site') . '</h4>')
-            ->set_conditional_logic([
-                [
-                    'field' => self::SIDEBAR_COLUMNS,
-                    'value' => ['3', '4'],
-                    'compare' => 'IN',
-                ]
-            ]);
-
-        foreach (Breakpoints::map() as $key => $minWidth) {
-            $fields[] = Field::make(
-                'text',
-                self::COLUMNS_PREFIX . '3_' . $key,
-                esc_html__(strtoupper($key) . ': ≥' . $minWidth . 'px', 'extend-site')
-            )
-                ->set_attribute('type', 'number')
-                ->set_attribute('min', 1)
-                ->set_attribute('max', 12)
-                ->set_attribute('step', 1)
-                ->set_default_value(Breakpoints::default_sidebar_col($key))
-                ->set_width(25)
-                ->set_conditional_logic([
-                    [
-                        'field' => self::SIDEBAR_COLUMNS,
-                        'value' => ['3', '4'],
-                        'compare' => 'IN',
-                    ]
-                ]);
-        }
-
-        // breakpoint heading for sidebar 4
-        $fields[] = Field::make('html', self::BREAKPOINT_HEADING . '4')
-            ->set_html('<h4>' . esc_html__('Sidebar Column 4 Settings', 'extend-site') . '</h4>')
-            ->set_conditional_logic([
-                [
-                    'field' => self::SIDEBAR_COLUMNS,
-                    'value' => ['4'],
-                    'compare' => 'IN',
-                ]
-            ]);
-
-        foreach (Breakpoints::map() as $key => $minWidth) {
-            $fields[] = Field::make(
-                'text',
-                self::COLUMNS_PREFIX . '4_' . $key,
-                esc_html__(strtoupper($key) . ': ≥' . $minWidth . 'px', 'extend-site')
-            )
-                ->set_attribute('type', 'number')
-                ->set_attribute('min', 1)
-                ->set_attribute('max', 12)
-                ->set_attribute('step', 1)
-                ->set_default_value(Breakpoints::default_sidebar_col($key))
-                ->set_width(25)
-                ->set_conditional_logic([
-                    [
-                        'field' => self::SIDEBAR_COLUMNS,
-                        'value' => ['4'],
-                        'compare' => 'IN',
-                    ]
-                ]);
-        }
-
-        return $fields;
+                ->set_layout( 'tabbed-horizontal' )
+                ->set_max( 2 )
+                ->add_fields( [
+                    Field::make(
+                        'complex',
+                        'addresses',
+                        esc_html__( 'Danh sách địa chỉ', 'extend-site' )
+                    )
+                        ->set_layout( 'list' )
+                        ->set_collapsed( true )
+                        ->add_fields( [
+                            Field::make(
+                                'text',
+                                'text',
+                                esc_html__( 'Địa chỉ', 'extend-site' )
+                            )
+                                ->set_width( 100 ),
+                        ] )
+                        ->set_header_template( '
+                            <% if (text) { %>
+                                <%- text %>
+                            <% } %>
+                        ' ),
+                ] )
+                ->set_help_text(
+                    esc_html__( 'Mỗi block tương ứng một cột. Mỗi dòng là một địa chỉ.', 'extend-site' )
+                )
+                ->set_header_template(esc_html__('Danh sách địa chỉ cột', 'extend-site') . ' <%- $_index + 1 %>'),
+        ];
     }
 
-    // get footer sidebar columns count
-    public function get_footer_sidebar_columns_count(int $default = 4): int
-    {
-        $value = (int)self::get(self::SIDEBAR_COLUMNS, $default);
+    /* =======================
+    * GETTERS
+    * ======================= */
 
-        return $value > 0 ? $value : $default;
+    // get logo
+    public function get_opt_footer_logo($default = null)
+    {
+        $id = self::get(self::LOGO);
+
+        return $id ?: $default;
     }
 
-    // get footer sidebar settings
-    public function get_footer_sidebar_settings(int $column): array
+    // get brand gallery
+    public function get_opt_footer_brand_gallery( $default = [] )
     {
-        $columns = [];
+        $gallery = self::get(self::BRAND_GALLERY);
 
-        foreach (Breakpoints::map() as $key => $minWidth) {
-            $columns[$key] = (int)self::get(self::COLUMNS_PREFIX . $column . '_' . $key, Breakpoints::default_sidebar_col($key));
+        return !empty($gallery) ? $gallery : $default;
+    }
+
+    // get address columns
+    public function get_opt_footer_address_columns( array $default = [] ): array
+    {
+        $columns = self::get( self::ADDRESS_COLUMNS );
+
+        if ( empty( $columns ) || ! is_array( $columns ) ) {
+            return $default;
         }
 
-        return $columns;
+        // Sanitize dữ liệu con
+        $columns = array_values( array_filter( $columns, function ( $column ) {
+            return ! empty( $column['addresses'] ) && is_array( $column['addresses'] );
+        } ) );
+
+        foreach ( $columns as &$column ) {
+            $column['addresses'] = array_values( array_filter(
+                $column['addresses'],
+                fn ( $row ) => ! empty( $row['text'] )
+            ) );
+        }
+        unset( $column );
+
+        return ! empty( $columns ) ? $columns : $default;
     }
 }
