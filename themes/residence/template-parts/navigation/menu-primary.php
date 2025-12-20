@@ -4,7 +4,13 @@ use ExtendSite\Options\GeneralOptions;
 
 defined('ABSPATH') || exit;
 
-$logo = residence_get_opt(GeneralOptions::class)?->get_logo_id();
+$logo = residence_get_opt(GeneralOptions::class)?->get_logo_id() ?? null;
+
+if ( empty( $logo ) ) {
+    $logo_src = get_theme_file_uri('/assets/images/logo.png');
+} else {
+    $logo_src = wp_get_attachment_image_url( $logo, 'medium' );
+}
 ?>
 <header class="header">
     <div class="header__wrap">
@@ -32,13 +38,7 @@ $logo = residence_get_opt(GeneralOptions::class)?->get_logo_id();
 
                 <div class="header__logo">
                     <a href="<?php echo esc_url(home_url()) ?>">
-                        <?php
-                        if ( ! empty( $logo ) ) :
-                            echo wp_get_attachment_image( $logo, 'medium' );
-                        else :
-                        ?>
-                            <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/logo.png')) ?>" alt="">
-                        <?php endif; ?>
+                        <img src="<?php echo esc_url( $logo_src ) ?>" alt="">
                     </a>
                 </div>
 
