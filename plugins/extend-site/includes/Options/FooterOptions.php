@@ -41,7 +41,7 @@ class FooterOptions extends OptionBase
                         'addresses',
                         esc_html__( 'Danh sách địa chỉ', 'extend-site' )
                     )
-                        ->set_layout( 'list' )
+                        ->set_layout( 'tabbed-vertical' )
                         ->set_collapsed( true )
                         ->add_fields( [
                             Field::make(

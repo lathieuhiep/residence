@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extend Site\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-27 09:04+0000\n"
+"POT-Creation-Date: 2025-12-21 08:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -13,74 +13,93 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.8.0; wp-6.8.2; php-8.3.16\n"
+"X-Loco-Version: 2.8.0; wp-6.9; php-8.1.30\n"
 "X-Domain: extend-site"
 
-#: includes/PostType/BasePostType.php:95
+#: includes/MetaBox/BranchMetaBox.php:97
+msgid "Area"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:55
+msgid "Banner"
+msgstr ""
+
+#: includes/Options/FooterOptions.php:28
+msgid "Brand gallery"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:94
+msgid "Capacity"
+msgstr ""
+
+#: includes/PostType/BasePostType.php:100
 #, php-format
 msgid "Cha của %s:"
 msgstr ""
 
-#: includes/ElementorAddon/Base/ControlOptions.php:26
-msgid "Chính giữa"
-msgstr ""
-
-#: includes/PostType/BasePostType.php:91 includes/PostType/BasePostType.php:126
+#: includes/PostType/BasePostType.php:96 includes/PostType/BasePostType.php:134
 #, php-format
 msgid "Chỉnh sửa %s"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasQueryControls.php:76
-msgid "Chọn danh mục"
+#: includes/Options/ThemeOptions.php:26
+msgid "Contact"
 msgstr ""
 
-#: includes/ElementorAddon/Widgets/ContactForm.php:45
-msgid "Chọn mẫu liên hệ"
+#: includes/Options/CopyrightOptions.php:25
+msgid "Content"
 msgstr ""
 
-#: includes/ElementorAddon/Widgets/ContactForm.php:18
-msgid "Contact Form 7"
+#: includes/Options/ThemeOptions.php:36
+msgid "Copyright"
 msgstr ""
 
-#: functions/helpers.php:50
-msgid "Create a Form First"
+#: includes/MetaBox/BranchMetaBox.php:145
+msgid ""
+"Cách lấy tọa độ: Mở Google Maps → tìm địa chỉ → chuột phải vào vị trí → sẽ "
+"hiện tọa độ\" → copy số đứng trước (ví dụ: 21.01781)."
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasQueryControls.php:141
-#: includes/ElementorAddon/Traits/HasSliderControls.php:32
-#: includes/ElementorAddon/Traits/HasSliderControls.php:45
-#: includes/ElementorAddon/Traits/HasSliderControls.php:57
-msgid "Có"
-msgstr ""
-
-#: includes/PostType/BasePostType.php:127
+#: includes/PostType/BasePostType.php:135
 #, php-format
 msgid "Cập nhật %s"
 msgstr ""
 
-#: includes/PostType/BasePostType.php:122
+#: includes/PostType/BasePostType.php:130
 #, php-format
 msgid "Danh mục %s"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasSliderControls.php:105
-msgid "Dưới 480px"
+#: includes/MetaBox/BranchMetaBox.php:74
+msgid "Danh sách loại phòng"
 msgstr ""
 
-#: includes/ElementorAddon/Base/ControlOptions.php:32
-msgid "Dưới giữa"
+#: includes/MetaBox/BranchMetaBox.php:129
+msgid "Danh sách vị trí (dùng chung cho loại phòng)"
 msgstr ""
 
-#: includes/ElementorAddon/Base/ControlOptions.php:34
-msgid "Dưới phải"
+#: includes/Options/FooterOptions.php:42
+msgid "Danh sách địa chỉ"
 msgstr ""
 
-#: includes/ElementorAddon/Base/ControlOptions.php:33
-msgid "Dưới trái"
+#: includes/Options/FooterOptions.php:34
+msgid "Danh sách địa chỉ (Footer)"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasSliderControls.php:85
-msgid "Dấu chấm"
+#: includes/Options/FooterOptions.php:63
+msgid "Danh sách địa chỉ cột"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:100
+msgid "Detail"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:156
+msgid "Dán số đứng sau trong tọa độ Google Maps (ví dụ: 105.85293)."
+msgstr ""
+
+#: includes/Options/ContactOptions.php:21
+msgid "Email"
 msgstr ""
 
 #. Description of the plugin
@@ -93,238 +112,218 @@ msgstr ""
 msgid "Extend Site"
 msgstr ""
 
-#: includes/ElementorAddon/ElementorAddon.php:60
-msgid "Extend Site Addons"
+#: includes/Options/ThemeOptions.php:33
+msgid "Footer"
 msgstr ""
 
-#: includes/ElementorAddon/ElementorAddon.php:46
-msgid ""
-"Extend Site: Elementor is not active. Elementor-based widgets will be "
-"unavailable."
+#: includes/MetaBox/BranchMetaBox.php:113
+msgid "Gallery"
 msgstr ""
 
-#: includes/ElementorAddon/Widgets/ContactForm.php:37
-msgid "Form liên hệ"
+#: includes/Options/ThemeOptions.php:22
+msgid "General"
 msgstr ""
 
-#: includes/ElementorAddon/Base/ControlOptions.php:16
-msgid "Full size (original)"
+#: includes/MetaBox/BranchMetaBox.php:65
+msgid "Giới thiệu"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasQueryControls.php:127
-msgid "Giảm dần"
+#: includes/Options/ContactOptions.php:20
+msgid "Hotline"
 msgstr ""
 
-#: includes/ElementorAddon/Base/ControlOptions.php:28
-msgid "Giữa bên phải"
+#: includes/Options/ContactOptions.php:44
+msgid "https://..."
 msgstr ""
 
-#: includes/ElementorAddon/Base/ControlOptions.php:27
-msgid "Giữa bên trái"
-msgstr ""
-
-#: includes/ElementorAddon/Traits/HasSliderControls.php:137
-msgid "Hiển thị"
-msgstr ""
-
-#: includes/ElementorAddon/Traits/HasQueryControls.php:138
-msgid "Hiển thị tóm tắt"
-msgstr ""
-
-#: includes/ElementorAddon/Traits/HasQueryControls.php:109
-msgid "ID"
-msgstr ""
-
-#: includes/ElementorAddon/Traits/HasSliderControls.php:149
-msgid "Khoảng cách"
-msgstr ""
-
-#: includes/ElementorAddon/Traits/HasQueryControls.php:142
-#: includes/ElementorAddon/Traits/HasSliderControls.php:33
-#: includes/ElementorAddon/Traits/HasSliderControls.php:46
-#: includes/ElementorAddon/Traits/HasSliderControls.php:58
-#: includes/ElementorAddon/Traits/HasSliderControls.php:86
-msgid "Không"
-msgstr ""
-
-#: includes/PostType/BasePostType.php:97
+#: includes/PostType/BasePostType.php:102
 msgid "Không tìm thấy trong Thùng rác."
 msgstr ""
 
-#: includes/PostType/BasePostType.php:96
+#: includes/PostType/BasePostType.php:101
 msgid "Không tìm thấy."
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:58
+msgid "Kích thước đề xuất: 1920x600px"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:62
+msgid "Kích thước đề xuất: 768x600px"
 msgstr ""
 
 #. Author of the plugin
 msgid "La Thieu Hiep"
 msgstr ""
 
-#: includes/ElementorAddon/Base/ControlOptions.php:15
-msgid "Large (1024 x 1024)"
+#: includes/MetaBox/BranchMetaBox.php:142
+msgid "Latitude (Vĩ độ)"
 msgstr ""
 
-#: includes/ElementorAddon/Base/ControlOptions.php:13
-msgid "Medium (300 x 300)"
+#: includes/Options/ContactOptions.php:41
+msgid "Link"
 msgstr ""
 
-#: includes/ElementorAddon/Base/ControlOptions.php:14
-msgid "Medium Large (768 x auto)"
+#: includes/Options/FooterOptions.php:24 includes/Options/GeneralOptions.php:28
+msgid "Logo"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasSliderControls.php:84
-msgid "Mũi tên"
+#: includes/MetaBox/BranchMetaBox.php:153
+msgid "Longitude (Kinh độ)"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasSliderControls.php:83
-msgid "Mũi tên và Dấu chấm"
+#: includes/MetaBox/BranchMetaBox.php:70
+msgid "Loại phòng"
 msgstr ""
 
-#: includes/PostType/BasePostType.php:90
+#: includes/MetaBox/BranchMetaBox.php:67 includes/MetaBox/BranchMetaBox.php:105
+#: includes/MetaBox/BranchMetaBox.php:134
+msgid "Mô tả"
+msgstr ""
+
+#: includes/Options/ContactOptions.php:27
+msgid "Mạng xã hội"
+msgstr ""
+
+#: includes/Options/FooterOptions.php:61
+msgid "Mỗi block tương ứng một cột. Mỗi dòng là một địa chỉ."
+msgstr ""
+
+#: includes/PostType/BasePostType.php:95
 #, php-format
 msgid "Mới %s"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasQueryControls.php:111
-msgid "Ngày đăng"
+#: includes/MetaBox/BranchMetaBox.php:170
+msgid "Mức zoom bản đồ (1–19). Thường dùng: 15–17."
 msgstr ""
 
-#: functions/helpers.php:63
-msgid "Sau"
+#: includes/MetaBox/BranchMetaBox.php:104
+#: includes/MetaBox/BranchMetaBox.php:133
+msgid "Nội dung"
 msgstr ""
 
-#: functions/helpers.php:43
-msgid "Select a Contact Form"
+#: includes/Options/ThemeOptions.php:30
+msgid "Recruitment"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasQueryControls.php:122
-msgid "Sắp xếp"
+#: includes/Options/CopyrightOptions.php:20
+msgid "Show Copyright"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasQueryControls.php:105
-msgid "Sắp xếp theo"
+#: includes/MetaBox/BranchMetaBox.php:177
+msgid "Số lượng căn hộ"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasQueryControls.php:90
-msgid "Số bài lấy ra"
+#: includes/Options/ThemeOptions.php:18
+msgid "Theme Settings"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasQueryControls.php:151
-msgid "Số lượng từ hiển thị"
-msgstr ""
-
-#: includes/ElementorAddon/Traits/HasSliderControls.php:79
-msgid "Thanh điều hướng"
-msgstr ""
-
-#: includes/ElementorAddon/Traits/HasQueryControls.php:66
-msgid "Thiết lập bài viết"
-msgstr ""
-
-#: includes/ElementorAddon/Base/ControlOptions.php:12
-msgid "Thumbnail (150 x 150)"
-msgstr ""
-
-#: includes/PostType/BasePostType.php:89 includes/PostType/BasePostType.php:128
+#: includes/PostType/BasePostType.php:94 includes/PostType/BasePostType.php:136
 #, php-format
 msgid "Thêm %s"
 msgstr ""
 
-#: includes/PostType/BasePostType.php:88
+#: includes/PostType/BasePostType.php:93
 msgid "Thêm mới"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasQueryControls.php:110
+#: includes/MetaBox/BranchMetaBox.php:53
+msgid "Thông tin chi nhánh"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:92
+msgid "Thông tin phòng"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:173
+msgid "Thông tin thêm"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:66
 msgid "Tiêu đề"
 msgstr ""
 
-#: includes/ElementorAddon/Base/ControlOptions.php:29
-msgid "Trên giữa"
-msgstr ""
-
-#: includes/ElementorAddon/Base/ControlOptions.php:31
-msgid "Trên phải"
-msgstr ""
-
-#: includes/ElementorAddon/Base/ControlOptions.php:30
-msgid "Trên trái"
-msgstr ""
-
-#: functions/helpers.php:62
-msgid "Trước"
-msgstr ""
-
-#: includes/PostType/BasePostType.php:129
+#: includes/PostType/BasePostType.php:137
 #, php-format
 msgid "Tên %s"
 msgstr ""
 
-#: includes/PostType/BasePostType.php:94 includes/PostType/BasePostType.php:124
+#: includes/MetaBox/BranchMetaBox.php:83
+msgid "Tên loại phòng"
+msgstr ""
+
+#: includes/Options/ContactOptions.php:35
+msgid "Tên mạng xã hội"
+msgstr ""
+
+#: includes/PostType/BasePostType.php:99 includes/PostType/BasePostType.php:132
 #, php-format
 msgid "Tìm kiếm %s"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasSliderControls.php:21
-msgid "Tùy chọn bổ sung"
-msgstr ""
-
-#: includes/ElementorAddon/Traits/HasSliderControls.php:117
-msgid "Tùy chọn Responsive"
-msgstr ""
-
-#: includes/ElementorAddon/Traits/HasQueryControls.php:126
-msgid "Tăng dần"
-msgstr ""
-
-#: includes/PostType/BasePostType.php:93 includes/PostType/BasePostType.php:125
+#: includes/PostType/BasePostType.php:98 includes/PostType/BasePostType.php:133
 #, php-format
 msgid "Tất cả %s"
 msgstr ""
 
-#: functions/cpt-helpers.php:29
+#: includes/Admin/Helpers/TaxFilter.php:46
 msgid "Tất cả danh mục"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasSliderControls.php:67
-msgid "Tốc độ trượt (ms)"
+#: includes/MetaBox/BranchMetaBox.php:86
+msgid "VD: Căn hộ studio, Căn hộ 2 phòng ngủ"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasSliderControls.php:100
-msgid "Từ 1200px"
+#: includes/Options/ContactOptions.php:36
+msgid "Ví dụ: FACEBOOK, INSTAGRAM"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasSliderControls.php:104
-msgid "Từ 480px"
+#: includes/MetaBox/BranchMetaBox.php:128
+msgid "Vị trí"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasSliderControls.php:103
-msgid "Từ 576px"
+#: includes/MetaBox/BranchMetaBox.php:136
+msgid "Vị trí chi nhánh"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasSliderControls.php:102
-msgid "Từ 768px"
-msgstr ""
-
-#: includes/ElementorAddon/Traits/HasSliderControls.php:101
-msgid "Từ 992px"
-msgstr ""
-
-#: includes/ElementorAddon/Traits/HasSliderControls.php:55
-msgid "Tự động chạy"
-msgstr ""
-
-#: includes/ElementorAddon/Traits/HasSliderControls.php:44
-msgid "Vòng lặp"
-msgstr ""
-
-#: includes/PostType/BasePostType.php:92
+#: includes/PostType/BasePostType.php:97
 #, php-format
 msgid "Xem %s"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasSliderControls.php:30
-msgid "Đồng bộ chiều cao slide"
+#: includes/MetaBox/BranchMetaBox.php:164
+msgid "Zoom"
 msgstr ""
 
-#: includes/ElementorAddon/Traits/HasImageSizeControl.php:21
-msgid "Độ phân giải ảnh"
+#: includes/Options/FooterOptions.php:50
+msgid "Địa chỉ"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:138
+msgid "Địa chỉ chi nhánh"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:68 includes/MetaBox/BranchMetaBox.php:119
+msgid "Ảnh"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:56
+msgid "Ảnh Desktop"
+msgstr ""
+
+#: includes/MetaBox/BranchMetaBox.php:60
+msgid "Ảnh Mobile"
+msgstr ""
+
+#: includes/Options/RecruitmentOptions.php:26
+msgid "Ảnh tuyển dụng 1"
+msgstr ""
+
+#: includes/Options/RecruitmentOptions.php:27
+msgid "Ảnh tuyển dụng 2"
+msgstr ""
+
+#: includes/Options/RecruitmentOptions.php:28
+msgid "Ảnh tuyển dụng 3"
 msgstr ""

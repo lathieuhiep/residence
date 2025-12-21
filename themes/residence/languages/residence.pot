@@ -1,0 +1,338 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Residence\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-21 07:56+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.0; wp-6.9; php-8.1.30\n"
+"X-Domain: residence"
+
+#: 404.php:12
+msgid "404"
+msgstr ""
+
+#: includes/MetaBox/PageHome/HomeContainer.php:43
+msgid "About"
+msgstr ""
+
+#. Name of the template
+#: templates/page-about.php:2
+msgid "About Page"
+msgstr ""
+
+#: includes/MetaBox/PageAbout/AboutContainer.php:38
+msgid "About Page Options"
+msgstr ""
+
+#: template-parts/footer/inc-info-brand.php:21
+msgid "All Rights Reserved."
+msgstr ""
+
+#: template-parts/cpt-branch/room/inc-info.php:24
+msgid "Area"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/BranchTab.php:70
+msgid "Ascending"
+msgstr ""
+
+#: includes/MetaBox/PageHome/HomeContainer.php:46
+msgid "Branch"
+msgstr ""
+
+#: comments.php:51
+msgid "Bình luận"
+msgstr ""
+
+#: comments.php:44
+msgid "Bình luận đã đóng."
+msgstr ""
+
+#: template-parts/components/inc-recruitment.php:90
+msgid ""
+"Bạn đang tìm kiếm một môi trường làm việc chuyên nghiệp, năng động và đầy cơ "
+"hội phát triển? Thai Hoang Holdings chính là nơi dành cho bạn! Chúng tôi "
+"đang mở rộng quy mô và tìm kiếm những cá nhân tài năng, nhiệt huyết để cùng "
+"đồng hành và tạo nên những bước tiến mới! Để ứng tuyển, vui lòng liên hệ bộ "
+"phận HCNS tại:"
+msgstr ""
+
+#: template-parts/cpt-branch/room/inc-info.php:16
+msgid "Capacity"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/HeroTab.php:37
+msgid "Chuỗi căn hộ dịch vụ cao cấp cho khách hàng Nhật Bản"
+msgstr ""
+
+#: comments.php:15
+#, php-format
+msgctxt "comments title"
+msgid "Một bình luận trên &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s bình luận trên &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/pages/home/inc-branch.php:33
+#: includes/MetaBox/PageHome/Tabs/BranchTab.php:29
+msgid "Các Chi Nhánh"
+msgstr ""
+
+#: template-parts/components/inc-recruitment.php:26
+msgid "Cơ Hội Nghề Nghiệp"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/BranchTab.php:71
+msgid "Descending"
+msgstr ""
+
+#: template-parts/cpt-branch/room/inc-info.php:47
+msgid "Detail"
+msgstr ""
+
+#: includes/MetaBox/PageAbout/AboutContainer.php:58
+msgid "Dịch vụ bao gồm"
+msgstr ""
+
+#: core/custom-comments.php:15
+#: template-parts/components/inc-popover-book.php:36
+#: template-parts/components/inc-recruitment.php:95
+#: template-parts/footer/inc-info-brand.php:57
+msgid "Email"
+msgstr ""
+
+#: includes/MetaBox/PageAbout/AboutContainer.php:43
+msgid "Giới thiệu"
+msgstr ""
+
+#: template-parts/pages/home/inc-branch.php:47
+msgid "giới thiệu chung"
+msgstr ""
+
+#: includes/MetaBox/PageHome/HomeContainer.php:39
+msgid "Hero"
+msgstr ""
+
+#. Name of the template
+#: templates/page-home.php:2
+msgid "Home Page"
+msgstr ""
+
+#: includes/MetaBox/PageHome/HomeContainer.php:34
+msgid "Home Page Options"
+msgstr ""
+
+#. URI of the theme
+msgid "https://github.com/lathieuhiep/blank-wp"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://www.facebook.com/lathieuhiep/"
+msgstr ""
+
+#: core/custom-comments.php:14
+msgid "Họ và tên"
+msgstr ""
+
+#: includes/MetaBox/PageAbout/AboutContainer.php:50
+msgid "Không gian sống"
+msgstr ""
+
+#: search.php:32
+msgid "Không tìm thấy kết quả nào."
+msgstr ""
+
+#: search.php:10
+#, php-format
+msgid "Kết quả tìm kiếm cho: %s"
+msgstr ""
+
+#. Author of the theme
+msgid "La Thiếu Hiệp"
+msgstr ""
+
+#: template-parts/components/inc-branch-map.php:79
+msgid "List các chi nhánh"
+msgstr ""
+
+#: template-parts/cpt-branch/room/inc-info.php:33
+msgid "Location"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/HeroTab.php:28
+msgid "Logo"
+msgstr ""
+
+#: template-parts/cpt-branch/inc-room-type.php:16
+msgid "Loại Phòng"
+msgstr ""
+
+#: core/theme-setup.php:58
+msgid "Menu chính bên phải"
+msgstr ""
+
+#: core/theme-setup.php:57
+msgid "Menu chính bên trái"
+msgstr ""
+
+#: core/theme-setup.php:59
+msgid "Menu chính hiển thị cho thiết bị (mobile, tablet)"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/BranchTab.php:57
+msgid "Menu order"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/HeroTab.php:34
+msgid "Mô tả"
+msgstr ""
+
+#. Description of the theme
+msgid "Một theme WordPress trắng cơ bản để tùy chỉnh và ghép HTML."
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/BranchTab.php:38
+msgid "Nhập link điều hướng."
+msgstr ""
+
+#: page.php:12 single.php:25
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/components/inc-popover-book.php:27
+#: template-parts/components/inc-recruitment.php:99
+#: template-parts/footer/inc-info-brand.php:52
+msgid "Phone"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/BranchTab.php:58
+msgid "Post ID"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/BranchTab.php:59
+msgid "Publish date"
+msgstr ""
+
+#. Name of the theme
+msgid "Residence"
+msgstr ""
+
+#: core/helpers.php:33 core/helpers.php:58
+msgid "Sau"
+msgstr ""
+
+#: core/theme-sidebar.php:32
+msgid "Sidebar chính"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/HeroTab.php:30
+msgid "SVG or image logo in hero section"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/BranchTab.php:54
+msgid "Sắp xếp theo"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/BranchTab.php:44
+msgid "Số chi nhánh hiển thị"
+msgstr ""
+
+#: template-parts/pages/home/inc-branch.php:91
+msgid "Số lượng căn hộ: "
+msgstr ""
+
+#: template-parts/footer/inc-info-brand.php:17
+msgid "THAI HOANG Residence"
+msgstr ""
+
+#: template-parts/pages/home/inc-branch.php:100
+msgid "Thái Hoàng"
+msgstr ""
+
+#: template-parts/navigation/menu-mobile.php:17
+#: template-parts/navigation/menu-primary.php:32
+#: template-parts/navigation/menu-primary.php:58
+msgid "Thêm Menu"
+msgstr ""
+
+#: core/theme-sidebar.php:34
+msgid "Thêm widget sử dụng cho sidebar"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/BranchTab.php:67
+msgid "Thứ tự sắp xếp"
+msgstr ""
+
+#: search.php:33
+msgid "Thử lại với từ khóa khác."
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/BranchTab.php:60
+msgid "Title"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/BranchTab.php:26
+msgid "Tiêu đề"
+msgstr ""
+
+#: core/helpers.php:32 core/helpers.php:57
+msgid "Trước"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/BranchTab.php:35
+msgid "Url"
+msgstr ""
+
+#: 404.php:17
+msgid "Về trang chủ"
+msgstr ""
+
+#: core/custom-comments.php:16
+msgid "Website"
+msgstr ""
+
+#: template-parts/cpt-branch/inc-room-type.php:146
+msgid "Xem thêm"
+msgstr ""
+
+#: 404.php:13
+msgid "Xin lỗi, trang bạn đang tìm kiếm không tồn tại."
+msgstr ""
+
+#: template-parts/footer/inc-info-brand.php:19
+msgid "© Copyright 2018 thaihoangresidence.com"
+msgstr ""
+
+#: includes/MetaBox/PageAbout/AboutContainer.php:46
+msgid "Điểm nổi bật"
+msgstr ""
+
+#: includes/MetaBox/PageAbout/AboutContainer.php:54
+msgid "Đầu tư + vận hành."
+msgstr ""
+
+#: template-parts/cpt-branch/inc-hero.php:37
+#: template-parts/cpt-branch/room/inc-info.php:62
+msgid "Đặt phòng ngay"
+msgstr ""
+
+#: comments.php:50
+msgid "Để lại bình luận"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/HeroTab.php:22
+msgid "Ảnh Desktop"
+msgstr ""
+
+#: includes/MetaBox/PageHome/Tabs/HeroTab.php:25
+msgid "Ảnh Mobile"
+msgstr ""

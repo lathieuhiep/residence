@@ -28,26 +28,6 @@ class GeneralOptions extends OptionBase
             Field::make('image', self::LOGO, esc_html__('Logo', 'extend-site'))
                 ->set_value_type('id')
                 ->set_help_text('Select your logo'),
-
-            // -----------------------------
-            // Loading Page
-            // -----------------------------
-            Field::make('checkbox', self::ENABLE_LOADING, esc_html__('Enable Loading Page', 'extend-site'))
-                ->set_option_value('yes'),
-
-            Field::make('image', self::LOADING_IMAGE, esc_html__('Loading Image', 'extend-site'))
-                ->set_help_text(__('Upload GIF/PNG for loading animation', 'extend-site'))
-                ->set_conditional_logic([
-                    [
-                        'field' => self::ENABLE_LOADING,
-                        'value' => true,
-                    ]
-                ]),
-
-            // Display back to top
-            Field::make('checkbox', self::BACK_TO_TOP, esc_html__('Enable back to Top', 'extend-site'))
-                ->set_option_value('yes')
-                ->set_default_value('yes'),
         ];
     }
 
@@ -57,25 +37,5 @@ class GeneralOptions extends OptionBase
         $id = self::get(self::LOGO);
 
         return $id ?: $default;
-    }
-
-    // get display loading enabled
-    public function get_loading_enabled(): bool
-    {
-        return (bool)self::get(self::ENABLE_LOADING, false);
-    }
-
-    // get image loading
-    public function get_loading_image_id($default = null)
-    {
-        $id = self::get(self::LOADING_IMAGE);
-
-        return $id ?: $default;
-    }
-
-    // get display back to top
-    public function get_back_to_top_enabled(): bool
-    {
-        return (bool)self::get(self::BACK_TO_TOP, true);
     }
 }

@@ -27,7 +27,7 @@ final class IncludedServicesTab
                 ->set_help_text(esc_html__('Ảnh minh họa bên trái', 'extend-site')),
 
             Field::make('complex', self::KEY_LIST, esc_html__('Danh sách dịch vụ', 'extend-site'))
-                ->set_layout('list')
+                ->set_layout('tabbed-vertical')
                 ->set_collapsed(true)
                 ->add_fields([
                     Field::make('text', 'text', esc_html__('Nội dung', 'extend-site'))

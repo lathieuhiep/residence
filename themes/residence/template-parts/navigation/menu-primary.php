@@ -63,15 +63,7 @@ if ( empty( $logo ) ) {
                 </div>
 
                 <div class="header__right">
-                    <div class="header__lang">
-                        <div class="select-lang">
-                            <p class="select-lang__label">VIE</p>
-                            <ul class="select-lang__list">
-                                <li><a href="#" class="current">VIE</a></li>
-                                <li><a href="#">ENG</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <?php get_template_part('template-parts/navigation/parts/inc', 'lang-switcher'); ?>
 
                     <div class="header__humberger d-xl-none">
                         <span class="t-1"></span>

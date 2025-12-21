@@ -2,12 +2,9 @@
 
 namespace ExtendSite\Core;
 
-use Carbon_Fields\Carbon_Fields;
-use ExtendSite\Fields\FieldsManager;
 use ExtendSite\MetaBox\BranchMetaBox;
 use ExtendSite\Options\ThemeOptions;
 use ExtendSite\PostType\BranchPostType;
-use ExtendSite\ElementorAddon\ElementorAddon;
 use ExtendSite\PostType\TemplateLoader;
 
 defined('ABSPATH') || exit;
@@ -18,7 +15,6 @@ class Plugin
     {
         self::load_text_domain();
         self::load_enqueue();
-        self::load_elementor_addon();
         self::load_custom_post_types();
 
         // Flush rewrite
@@ -26,9 +22,6 @@ class Plugin
 
         // Load Carbon Fields
         CarbonLoader::boot();
-
-        // Load custom fields
-        FieldsManager::boot();
 
         // Load Carbon Fields theme options
         ThemeOptions::boot();
@@ -55,14 +48,6 @@ class Plugin
     private static function load_enqueue(): void
     {
         Enqueue::boot();
-    }
-
-    /**
-     * Load the Elementor addon.
-     */
-    private static function load_elementor_addon(): void
-    {
-        ElementorAddon::boot();
     }
 
     /**

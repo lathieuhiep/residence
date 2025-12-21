@@ -40,25 +40,5 @@ class Enqueue
      * Enqueue scripts frontend
      */
     public static function enqueue_scripts_frontend(): void
-    {
-        // Check if Elementor is used to build the current page
-        $page_builder = ESHelpers::check_elementor_builder();
-
-        if ( $page_builder ) {
-            // load frontend style
-            wp_enqueue_style('es-addons-elementor',
-                EXTEND_SITE_URL . 'assets/css/frontend/addons-elementor.min.css',
-                [],
-                EXTEND_SITE_VERSION
-            );
-
-            // load frontend script
-            wp_register_script( 'es-addons-elementor',
-                EXTEND_SITE_URL . 'assets/js/frontend/addons-elementor.min.js',
-                array( 'jquery', 'swiper' ),
-                EXTEND_SITE_VERSION,
-                true
-            );
-        }
-    }
+    {}
 }
