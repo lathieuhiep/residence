@@ -1,8 +1,15 @@
 <?php
 
 use ExtendSite\Options\ContactOptions;
+use ExtendSite\Options\CopyrightOptions;
 use ExtendSite\Options\FooterOptions;
 
+// Get copyright text
+$show_copyright = residence_get_opt(CopyrightOptions::class)?->get_show_copyright() ?? true;
+$copyright_heading = residence_get_opt(CopyrightOptions::class)?->get_content_heading() ?? '';
+$copyright_text = residence_get_opt(CopyrightOptions::class)?->get_content_copyright() ?? '';
+
+// Get address columns
 $address_columns = residence_get_opt(FooterOptions::class)?->get_opt_footer_address_columns() ?? [];
 
 // Get contact info
@@ -13,14 +20,11 @@ $social_links = residence_get_opt(ContactOptions::class)?->get_opt_contact_socia
 <div class="item-content">
     <div class="row">
         <div class="col-xl-3">
-            <div class="item-info wow fadeInUp">
-                <?php esc_html_e('THAI HOANG Residence', 'residence'); ?>
-                <p>
-                    <?php esc_html_e('© Copyright 2018 thaihoangresidence.com', 'residence'); ?>
-                    <br>
-                    <?php esc_html_e('All Rights Reserved.', 'residence'); ?>
-                </p>
-            </div>
+            <?php if ($show_copyright) : ?>
+                <div class="item-info wow fadeInUp">
+                   <?php echo esc_html( $copyright_heading ) . wpautop($copyright_text); ?>
+                </div>
+            <?php endif; ?>
         </div>
 
         <div class="col-xl-9">

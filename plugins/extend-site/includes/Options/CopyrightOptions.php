@@ -10,6 +10,7 @@ class CopyrightOptions extends OptionBase
     // Key prefix
     private const PREFIX = 'es_opt_copyright_';
     private const SHOW = self::PREFIX . 'show';
+    private const HEADING = self::PREFIX . 'heading';
     private const CONTENT = self::PREFIX . 'content';
 
     // fields
@@ -20,6 +21,16 @@ class CopyrightOptions extends OptionBase
             Field::make('checkbox', self::SHOW, esc_html__('Show Copyright', 'extend-site'))
                 ->set_option_value('yes')
                 ->set_default_value(true),
+
+            Field::make('text', self::HEADING, esc_html__('Heading', 'extend-site'))
+                ->set_default_value('THAI HOANG Residence')
+                ->set_conditional_logic([
+                    [
+                        'field'   => self::SHOW,
+                        'value'   => true,
+                        'compare' => '=',
+                    ]
+                ]),
 
             // Content editor
             Field::make('rich_text', self::CONTENT, esc_html__('Content', 'extend-site'))
@@ -38,6 +49,12 @@ class CopyrightOptions extends OptionBase
     public function get_show_copyright(): bool
     {
         return self::get(self::SHOW, 'yes');
+    }
+
+    // get content heading
+    public function get_content_heading(): string
+    {
+        return (string) self::get(self::HEADING) ?? '';
     }
 
     // get content copyright
