@@ -12,7 +12,7 @@ class Enqueue
      */
     public static function boot(): void
     {
-        add_action('login_enqueue_scripts', [self::class, 'enqueue_scripts_login']);
+//        add_action('login_enqueue_scripts', [self::class, 'enqueue_scripts_login']);
         add_action('admin_enqueue_scripts', [self::class, 'enqueue_scripts_backend']);
         add_action('wp_enqueue_scripts', [self::class, 'enqueue_scripts_frontend']);
     }
