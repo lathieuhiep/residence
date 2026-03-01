@@ -30,3 +30,15 @@ add_filter('nav_menu_submenu_css_class', function ($classes, $args, $depth) {
     return ['submenu'];
 
 }, 10, 3);
+
+// Thêm class scroll-link cho các link có href bắt đầu bằng #
+function residence_add_scroll_link_class($atts, $item, $args) {
+    if (!empty($atts['href']) && str_starts_with($atts['href'], '#')) {
+        $atts['class'] = isset($atts['class'])
+            ? $atts['class'] . ' scroll-link'
+            : 'scroll-link';
+    }
+
+    return $atts;
+}
+add_filter('nav_menu_link_attributes', 'residence_add_scroll_link_class', 10, 3);

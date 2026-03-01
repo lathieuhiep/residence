@@ -15,7 +15,9 @@
     <?php
     if ( !is_404() ) :
         // Loading Screen
-        get_template_part('template-parts/loading/loader');
+        if ( is_page_template('templates/page-home.php') ) :
+            get_template_part('template-parts/loading/loader');
+        endif;
 
         // Primary Navigation
         get_template_part('template-parts/navigation/menu', 'primary');

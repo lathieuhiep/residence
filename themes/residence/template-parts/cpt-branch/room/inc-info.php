@@ -13,15 +13,19 @@ $meta_location = $args['meta_location'] ?? [];
     <div class="col-xl-5 offset-xl-6">
         <div class="item-list">
             <div class="f-item wow fadeInUp">
-                <span class="f-sub"><?php esc_html_e('Capacity', 'residence'); ?></span>
+                <span class="f-sub"><?php esc_html_e('Số lượng khách', 'residence'); ?></span>
 
-                <div class="f-content">
-                    <p><?php echo esc_html( $room['capacity'] ); ?></p>
-                </div>
+                <?php if ( $room['capacity'] )  : ?>
+                    <div class="f-content">
+                        <p>
+                            <?php echo esc_html( $room['capacity'] ) . ' '; esc_html_e('người', 'residence'); ?>
+                        </p>
+                    </div>
+                <?php endif; ?>
             </div>
 
             <div class="f-item wow fadeInUp">
-                <span class="f-sub"><?php esc_html_e('Area', 'residence'); ?></span>
+                <span class="f-sub"><?php esc_html_e('Diện tích', 'residence'); ?></span>
 
                 <div class="f-content">
                     <p><?php echo esc_html( $room['area'] ); ?></p>
@@ -30,7 +34,7 @@ $meta_location = $args['meta_location'] ?? [];
 
             <?php if ( ! empty( $meta_location ) ) : ?>
                 <div class="f-item wow fadeInUp">
-                    <span class="f-sub"><?php esc_html_e('Location', 'residence'); ?></span>
+                    <span class="f-sub"><?php esc_html_e('Vị trí', 'residence'); ?></span>
 
                     <div class="f-content">
                         <ul>
@@ -44,7 +48,7 @@ $meta_location = $args['meta_location'] ?? [];
 
             <?php if ( ! empty( $room['detail'] ) ) : ?>
                 <div class="f-item wow fadeInUp">
-                    <span class="f-sub"><?php esc_html_e('Detail', 'residence'); ?></span>
+                    <span class="f-sub"><?php esc_html_e('Chi tiết', 'residence'); ?></span>
 
                     <div class="f-content">
                         <ul>

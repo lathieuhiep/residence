@@ -62,7 +62,6 @@
 
                 el.css({
                     'display': 'block',
-                    'display': '-webkit-box',
                     'height': overflow,
                     '-webkit-line-clamp': String(options.numberLine),
                     '-webkit-box-orient': 'vertical',
@@ -292,13 +291,13 @@
         var update = function() {
             var ww = $(window).outerWidth();
             if(ww < 768) {
-                $('[data-img-mb').each(function() {
+                $('[data-img-mb]').each(function() {
                     var self = $(this),
                         url = self.attr('data-img-mb');
                     self.attr('src', url);
                 });
     
-                $('[data-bg-mb').each(function() {
+                $('[data-bg-mb]').each(function() {
                     var self = $(this),
                         url = self.attr('data-bg-mb');
                     self.css('background-image', 'url('+url+')');
@@ -357,150 +356,6 @@
         }
         update();
         $(window).on('resize', debounce(update, 200));
-    }
-
-    function lazyLoading() {
-        const updateRatio = () => {
-            const ww = window.innerWidth;
-            if( ww > 767 ) {
-                $('[data-ratio-pc]').each(function() {
-                    const self = $(this);
-                    const getRatio = self.attr('data-ratio-pc');
-                    self.find('.fixRatio').css('--ratio', getRatio);
-                });
-            }else {
-                $('[data-ratio-mb]').each(function() {
-                    const self = $(this);
-                    const getRatio = self.attr('data-ratio-mb');
-                    self.find('.fixRatio').css('--ratio', getRatio);
-                });
-            }
-        }
-        updateRatio();
-        $(window).on('resize', debounce(updateRatio, 200));
-
-        const lazyLoadingImg = () => {
-            const ww = window.innerWidth;
-            const wh = window.outerHeight;
-            $('[data-lazy-img]').each(function() {
-                const self = $(this);
-                const loadImage = () => {
-                    const getSrc = self.attr('data-lazy-img');
-                    self.attr('src', getSrc);
-                    self.closest('.lazyloading').addClass('loaded');
-                };
-
-                const ST = ScrollTrigger.create({
-                    trigger: self,
-                    start: `top-=${wh} bottom`,
-                    onEnter: loadImage,
-                    onEnterBack: loadImage,
-                    invalidateOnRefresh: true,
-                });
-            });
-
-            $('[data-lazy-bg]').each(function() {
-                const self = $(this);
-                const getTrigger = self.attr('data-lazy-trigger-pc');
-                const loadImage = () => {
-                    const getSrc = self.attr('data-lazy-bg');
-                    self.css('background-image', `url(${getSrc})`);
-                    self.addClass('loaded');
-                };
-                if( getTrigger === 'undefined' ) {
-                    ScrollTrigger.create({
-                        trigger: self,
-                        start: `top-=${wh/2} bottom`,
-                        onEnter: loadImage,
-                        onEnterBack: loadImage,
-                    });
-                }else {
-                    ScrollTrigger.create({
-                        trigger: getTrigger,
-                        start: `top-=${wh/5} bottom`,
-                        onEnter: loadImage,
-                        onEnterBack: loadImage,
-                    });
-                }
-            });
-
-            if( ww  > 767) {
-                $('[data-lazy-img-pc]').each(function() {
-                    const self = $(this);
-                    const loadImage = () => {
-                        const getSrc = self.attr('data-lazy-img-pc');
-                        self.attr('src', getSrc);
-                        self.closest('.lazyloading').addClass('loaded');
-                    };
-    
-                    ScrollTrigger.create({
-                        trigger: self,
-                        start: `top-=${wh} bottom`,
-                        onEnter: loadImage,
-                        onEnterBack: loadImage,
-                    });
-                });
-
-                $('[data-lazy-bg-pc]').each(function() {
-                    const self = $(this);
-                    const getTrigger = self.attr('data-lazy-trigger-pc');
-                    const loadImage = () => {
-                        const getSrc = self.attr('data-lazy-bg-pc');
-                        self.css('background-image', `url(${getSrc})`);
-                        self.addClass('loaded');
-                    };
-                    if( getTrigger === 'undefined' ) {
-                        ScrollTrigger.create({
-                            trigger: self,
-                            start: `top-=${wh/2} bottom`,
-                            onEnter: loadImage,
-                            onEnterBack: loadImage,
-                        });
-                    }else {
-                        ScrollTrigger.create({
-                            trigger: getTrigger,
-                            start: `top-=${wh/5} bottom`,
-                            onEnter: loadImage,
-                            onEnterBack: loadImage,
-                        });
-                    }
-                });
-
-            }else {
-                $('[data-lazy-img-mb]').each(function() {
-                    const self = $(this);
-                    const loadImage = () => {
-                        const getSrc = self.attr('data-lazy-img-mb');
-                        self.attr('src', getSrc);
-                        self.closest('.lazyloading').addClass('loaded');
-                    };
-    
-                    ScrollTrigger.create({
-                        trigger: self,
-                        start: `top-=${wh} bottom`,
-                        onEnter: loadImage,
-                        onEnterBack: loadImage,
-                    });
-                });
-
-                $('[data-lazy-bg-mb]').each(function() {
-                    const self = $(this);
-                    const loadImage = () => {
-                        const getSrc = self.attr('data-lazy-bg-mb');
-                        self.css('background-image', `url(${getSrc})`);
-                        self.addClass('loaded');
-                    };
-
-                    ScrollTrigger.create({
-                        trigger: self,
-                        start: `top-=${wh/2} bottom`,
-                        onEnter: loadImage,
-                        onEnterBack: loadImage,
-                    });
-                });
-            }
-        }
-        $(window).on('load', lazyLoadingImg);
     }
 
     function headerJs() {
@@ -683,23 +538,6 @@
         }
     }
 
-    function scrollToId() {
-        var wrap = $('.scrollToJs');
-        if( wrap.length ) {
-            wrap.on('click', function(e) {
-                e.preventDefault();
-                const getId = $(this).attr('href');
-                const offsetTop = $(getId).offset().top;
-                const getHeaderH = $('.header__wrap').outerHeight() + 10;
-                $('html, body').animate({scrollTop:  Math.floor(offsetTop-getHeaderH) }, 500);
-                
-                if( $('.header').hasClass('header--showmenu') ) {
-                    $('.header__humberger').trigger('click');
-                }
-            });
-        }
-    }
-
     function selectLangJs() {
         $('.select-lang__label').on('click', function() {
             $(this).parent().toggleClass('show');
@@ -767,7 +605,6 @@
                     freeMode: true,
                     loop: false,
                     allowTouchMove: false,
-                    allowTouchMove: false, // Tắt swipe tay
                     simulateTouch: false,
                     watchSlidesProgress: true,
                     noSwiping: true,
@@ -1076,42 +913,17 @@
         }
     }
 
-    // function popupJs() {
-    //     $('[data-popup]').on('click', function(e) {
-    //         e.preventDefault();
-    //         const self = $(this);
-    //         const getId = self.attr('href');
-    //         $(getId).addClass('show-popup');
-    //         $('body').addClass('body-fix-scroll');
-    //         lenis.stop();
-    //     });
-
-    //     $('.popup__close').on('click', function() {
-    //         $('.popup__bg').trigger('click')
-    //     });
-
-    //     $('.popup__bg').on('click', function() {
-    //         $(this).closest('.popup').removeClass('show-popup');
-    //         $('body').removeClass('body-fix-scroll');
-    //         lenis.start();
-    //     });
-    // }
-
     wowReponsiveJs()
     dataImageMobileUrl();
-    // lazyLoading();
     headerJs();
     accordionJs();
     tabboxJs();
     bigBranchJs();
     detailInfoSlideJs();
-    // roomBoxJs();
     selectLangJs();
     backToTopJs();
     popoverJs();
     loadingJs();
-    // popupJs();
-    // scrollToId();
 
     $(window).on('load', function() {
         // loadingVideoJs();

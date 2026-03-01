@@ -91,13 +91,13 @@ class BranchMetaBox extends OptionPostMetaBase
                          * ===================== */
                         Field::make('separator', 'sep_info', esc_html__('Thông tin phòng', 'extend-site')),
 
-                        Field::make('text', 'capacity', esc_html__('Capacity', 'extend-site'))
-                            ->set_help_text('VD: 1 - 3 person'),
+                        Field::make('text', 'capacity', esc_html__('Số lượng khách', 'extend-site'))
+                            ->set_help_text('VD: 1 - 3'),
 
-                        Field::make('text', 'area', esc_html__('Area', 'extend-site'))
+                        Field::make('text', 'area', esc_html__('Diện tích', 'extend-site'))
                             ->set_help_text('VD: 138m²'),
 
-                        Field::make('complex', 'detail', esc_html__('Detail', 'extend-site'))
+                        Field::make('complex', 'detail', esc_html__('Chi tiết', 'extend-site'))
                             ->set_layout('tabbed-vertical')
                             ->set_collapsed(true)
                             ->add_fields([
