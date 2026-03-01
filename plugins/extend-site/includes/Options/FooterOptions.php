@@ -25,7 +25,17 @@ class FooterOptions extends OptionBase
                 ->set_value_type('id'),
 
             // brand media gallery
-            Field::make( 'media_gallery', self::BRAND_GALLERY, esc_html__( 'Brand gallery', 'extend-site' ) ),
+            Field::make( 'complex', self::BRAND_GALLERY, esc_html__( 'Nhãn hiệu', 'extend-site' ) )
+                ->add_fields( [
+                    Field::make( 'image', 'image', esc_html__( 'Ảnh', 'extend-site' ) ),
+
+                    Field::make( 'text', 'url', esc_html__( 'Link URL', 'extend-site' ) )
+                        ->set_attribute( 'type', 'url' )
+                        ->set_help_text( esc_html__( 'Enter full URL (https://...)', 'extend-site' ) ),
+                ] )
+                ->set_layout( 'tabbed-horizontal' )
+                ->set_collapsed( true )
+                ->set_header_template(esc_html__('Nhãn hiệu', 'extend-site') . ' <%- $_index + 1 %>'),
 
             // Footer address columns
             Field::make(
