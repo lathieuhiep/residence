@@ -4,26 +4,49 @@ use ExtendSite\Options\ContactOptions;
 use ExtendSite\Options\RecruitmentOptions;
 
 $recruitment_options = residence_get_opt(RecruitmentOptions::class)?->get_opt_recruitment_images() ?? [];
+$recruitment_page_args = [
+    'post_type'        => 'page',
+    'post_status'      => 'publish',
+    'numberposts'      => 1,
+    'orderby'          => 'menu_order title',
+    'order'            => 'ASC',
+    'meta_key'         => '_wp_page_template',
+    'meta_value'       => 'templates/page-recruitment-content.php',
+    'suppress_filters' => false,
+];
+
+if ( function_exists( 'pll_current_language' ) ) {
+    $recruitment_page_args['lang'] = pll_current_language( 'slug' );
+}
+
+$recruitment_page = get_posts( $recruitment_page_args )[0] ?? null;
+$recruitment_content = $recruitment_page instanceof WP_Post
+    ? apply_filters( 'the_content', $recruitment_page->post_content )
+    : wpautop(
+        esc_html__(
+            'Bạn đang tìm kiếm một môi trường làm việc chuyên nghiệp, năng động và đầy cơ hội phát triển? Thai Hoang Holdings chính là nơi dành cho bạn! Chúng tôi đang mở rộng quy mô và tìm kiếm những cá nhân tài năng, nhiệt huyết để cùng đồng hành và tạo nên những bước tiến mới! Để ứng tuyển, vui lòng liên hệ bộ phận HCNS tại:',
+            'residence'
+        )
+    );
 
 $left_image = $main_image = $right_image = null;
 
-if ( !empty( $recruitment_options ) ) {
+if ( ! empty( $recruitment_options ) ) {
     $images = array_values( $recruitment_options );
 
-    // Mapping theo layout
+    // Mapping theo layout.
     $left_image  = $images[0] ?? null;
     $main_image  = $images[1] ?? $images[0] ?? null;
     $right_image = $images[2] ?? null;
 }
 
-// Get contact info
 $phone = residence_get_opt(ContactOptions::class)?->get_otp_contact_phone() ?? '091 3833 333';
 $email = residence_get_opt(ContactOptions::class)?->get_opt_contact_email() ?? 'thaihoangapartmenthd@gmail.com';
 ?>
 <section class="section sec-homeCongViec" id="id-congviec">
     <div class="container">
         <h2 class="titlebox__title wow fadeInUp">
-            <?php esc_html_e('Cơ Hội Nghề Nghiệp', 'residence'); ?>
+            <?php esc_html_e( 'Cơ Hội Nghề Nghiệp', 'residence' ); ?>
         </h2>
 
         <div class="item-content">
@@ -36,10 +59,10 @@ $email = residence_get_opt(ContactOptions::class)?->get_opt_contact_email() ?? '
                                     <div class="f-img__inner">
                                         <?php
                                         echo wp_get_attachment_image(
-                                                (int) $left_image,
-                                                'large',
-                                                false,
-                                                [ 'loading' => 'lazy' ]
+                                            (int) $left_image,
+                                            'large',
+                                            false,
+                                            [ 'loading' => 'lazy' ]
                                         );
                                         ?>
                                     </div>
@@ -52,10 +75,10 @@ $email = residence_get_opt(ContactOptions::class)?->get_opt_contact_email() ?? '
                                 <div class="f-img__inner">
                                     <?php
                                     echo wp_get_attachment_image(
-                                            (int) $main_image,
-                                            'large',
-                                            false,
-                                            [ 'loading' => 'lazy' ]
+                                        (int) $main_image,
+                                        'large',
+                                        false,
+                                        [ 'loading' => 'lazy' ]
                                     );
                                     ?>
                                 </div>
@@ -68,10 +91,10 @@ $email = residence_get_opt(ContactOptions::class)?->get_opt_contact_email() ?? '
                                     <div class="f-img__inner">
                                         <?php
                                         echo wp_get_attachment_image(
-                                                (int) $right_image,
-                                                'large',
-                                                false,
-                                                [ 'loading' => 'lazy' ]
+                                            (int) $right_image,
+                                            'large',
+                                            false,
+                                            [ 'loading' => 'lazy' ]
                                         );
                                         ?>
                                     </div>
@@ -86,18 +109,16 @@ $email = residence_get_opt(ContactOptions::class)?->get_opt_contact_email() ?? '
                 <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
                     <div class="item-text">
                         <div class="f-entry wow fadeInUp">
-                            <p>
-                                <?php esc_html_e('Bạn đang tìm kiếm một môi trường làm việc chuyên nghiệp, năng động và đầy cơ hội phát triển? Thai Hoang Holdings chính là nơi dành cho bạn! Chúng tôi đang mở rộng quy mô và tìm kiếm những cá nhân tài năng, nhiệt huyết để cùng đồng hành và tạo nên những bước tiến mới! Để ứng tuyển, vui lòng liên hệ bộ phận HCNS tại:' , 'residence'); ?>
-                            </p>
+                            <?php echo $recruitment_content; ?>
                         </div>
                         <ul class="f-list wow fadeInUp">
                             <li>
-                                <span><?php esc_html_e('Email', 'residence'); ?></span>
-                                <a href="mailto:<?php echo esc_attr( $email )?>"><?php echo esc_html( $email )?></a>
+                                <span><?php esc_html_e( 'Email', 'residence' ); ?></span>
+                                <a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a>
                             </li>
                             <li>
-                                <span><?php esc_html_e('Phone', 'residence'); ?></span>
-                                <a href="tel:<?php echo esc_attr( residence_preg_replace_ony_number($phone) ) ?>"><?php echo esc_html( $phone ); ?></a>
+                                <span><?php esc_html_e( 'Phone', 'residence' ); ?></span>
+                                <a href="tel:<?php echo esc_attr( residence_preg_replace_ony_number( $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a>
                             </li>
                         </ul>
                     </div>
