@@ -87,7 +87,7 @@ $branches_json = wp_json_encode($branches, JSON_UNESCAPED_UNICODE);
             </div>
 
             <div class="col-xl-5 order-xl-1">
-                <h2 class="titlebox__title d-none d-xl-block fz-80 wow fadeInUp">List các chi nhánh</h2>
+                <h2 class="titlebox__title d-none d-xl-block fz-80 wow fadeInUp"><?php esc_html_e('List các chi nhánh', 'residence'); ?></h2>
 
                 <div class="item-left">
                     <div id="branchList" class="item-list wow fadeInUp"></div>
