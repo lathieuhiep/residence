@@ -111,7 +111,7 @@ $email = residence_get_opt(ContactOptions::class)?->get_opt_contact_email() ?? '
                         <div class="f-entry wow fadeInUp">
                             <?php echo $recruitment_content; ?>
                         </div>
-                        <ul class="f-list wow fadeInUp">
+                        <!-- <ul class="f-list wow fadeInUp">
                             <li>
                                 <span><?php esc_html_e( 'Email', 'residence' ); ?></span>
                                 <a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a>
@@ -120,7 +120,7 @@ $email = residence_get_opt(ContactOptions::class)?->get_opt_contact_email() ?? '
                                 <span><?php esc_html_e( 'Phone', 'residence' ); ?></span>
                                 <a href="tel:<?php echo esc_attr( residence_preg_replace_ony_number( $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
             </div>
